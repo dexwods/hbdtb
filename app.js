@@ -323,18 +323,12 @@ function cameoSvg(kind) {
       <path d="M46 22h28" stroke="#1B1B1B" stroke-opacity="0.18" stroke-width="4" stroke-linecap="round"/>
       <!-- measurement lines -->
       <path d="M44 34h10M44 44h10M44 54h10M44 64h10" stroke="#1B1B1B" stroke-opacity="0.12" stroke-width="2" stroke-linecap="round"/>
-      <!-- liquid -->
-      <path d="M34 70c0 16 10 24 26 24s26-8 26-24v10c0 10-8 18-18 18H52c-10 0-18-8-18-18V70z"
-        fill="#7DFFB0" opacity="0.85"/>
-      <circle cx="54" cy="74" r="3.2" fill="#ffffff" opacity="0.7"/>
-      <circle cx="66" cy="84" r="2.7" fill="#ffffff" opacity="0.6"/>
     </g>
   `;
 
   const icons = {
     syringe,
     bloodbag,
-    wheelchair,
     stetho,
     testtube,
   };
@@ -353,7 +347,7 @@ function spawnCameo() {
   if (!isGiftOpen) return;
   if (els.cameos.querySelectorAll(".cameo").length >= 6) return; // persistent, but keep it tasteful
 
-  const kinds = ["syringe", "bloodbag", "stetho", "testtube", "wheelchair"];
+  const kinds = ["syringe", "bloodbag", "stetho", "testtube"];
   spawnCameo.nextIndex = (spawnCameo.nextIndex ?? 0) + 1;
   const kind = kinds[(spawnCameo.nextIndex - 1) % kinds.length];
 
