@@ -490,6 +490,6 @@ els.resetBtn.addEventListener("click", () => {
   resetAll();
 });
 
-setHint("Pindutin mo");
+setHint("Enable mo yung mic. Pindutin mo rin yung box");
 updateMid20sFlag(getCandleCount());
 
