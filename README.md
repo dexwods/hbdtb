@@ -15,7 +15,16 @@ python -m http.server 5173
 
 Then visit `http://localhost:5173`.
 
-If you don't have Python yet, the easiest option is to **deploy to GitHub Pages** (below) and test there over HTTPS.
+If you don't have Python, you can use Node (no install needed beyond Node):
+
+```bash
+cd hbdtb
+node serve.mjs
+```
+
+Then visit `http://localhost:5173`.
+
+If you don't have Python or Node, the easiest option is to **deploy to GitHub Pages** (below) and test there over HTTPS.
 
 ## GitHub Pages
 
