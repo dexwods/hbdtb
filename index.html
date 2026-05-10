@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Happy Birthday</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="bg-sparkles" aria-hidden="true"></div>
+    <main class="app">
+      <header class="header">
+        <div class="badge">A tiny gift for you</div>
+        <h1 class="title">Happy Birthday!</h1>
+        <p class="subtitle" id="subtitle">
+          Tap the gift box. Then click the cake to add candles. Blow into your mic to
+          make a wish.
+        </p>
+      </header>
+
+      <section class="stage" aria-label="Birthday stage">
+        <div class="card">
+          <div class="scene" id="scene">
+            <button class="gift" id="gift" type="button" aria-label="Open gift">
+              <div class="gift__shadow" aria-hidden="true"></div>
+              <div class="gift__box" aria-hidden="true">
+                <div class="gift__ribbon gift__ribbon--h" aria-hidden="true"></div>
+                <div class="gift__ribbon gift__ribbon--v" aria-hidden="true"></div>
+                <div class="gift__tag" aria-hidden="true">open me</div>
+              </div>
+              <div class="gift__lid" aria-hidden="true">
+                <div class="gift__bow" aria-hidden="true">
+                  <span></span><span></span>
+                </div>
+              </div>
+            </button>
+
+            <div class="cakeWrap" id="cakeWrap" aria-hidden="true">
+              <div class="cake" id="cake" aria-label="Cake">
+                <div class="plate"></div>
+                <div class="layer layer-bottom"></div>
+                <div class="layer layer-middle"></div>
+                <div class="layer layer-top"></div>
+                <div class="icing"></div>
+                <div class="drip drip1"></div>
+                <div class="drip drip2"></div>
+                <div class="drip drip3"></div>
+                <div class="candles" id="candles" aria-hidden="true"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="controls">
+            <div class="stat">
+              <div class="stat__label">Candles</div>
+              <div class="stat__value" id="candleCount">0</div>
+            </div>
+
+            <button class="btn" id="micBtn" type="button">
+              Enable mic to blow
+            </button>
+
+            <button class="btn btn--ghost" id="resetBtn" type="button">
+              Reset
+            </button>
+          </div>
+
+          <div class="hint" id="hint" role="status" aria-live="polite"></div>
+        </div>
+      </section>
+    </main>
+
+    <div id="confetti" aria-hidden="true"></div>
+    <script src="app.js"></script>
+  </body>
+</html>
