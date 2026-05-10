@@ -113,7 +113,8 @@ function addCandleAtPoint({ xPx, yPx }) {
     showMid20sFlag();
   }
 
-  if (Math.random() < 0.22) spawnCameo();
+  // Predictable pattern: every 2 candles, show the next medtech sticker.
+  if (nextCount % 2 === 0) spawnCameo();
 }
 
 function showMid20sFlag() {
@@ -314,14 +315,19 @@ function cameoSvg(kind) {
   `;
 
   const testtube = `
-    <g transform="translate(0,2) rotate(10 60 60)">
-      <rect x="48" y="22" width="24" height="70" rx="12" fill="#EAF7FF" stroke="#1B1B1B" stroke-opacity="0.16" stroke-width="2"/>
-      <path d="M48 34h24" stroke="#1B1B1B" stroke-opacity="0.12" stroke-width="2" stroke-linecap="round"/>
-      <path d="M48 44h24" stroke="#1B1B1B" stroke-opacity="0.12" stroke-width="2" stroke-linecap="round"/>
-      <path d="M48 54h24" stroke="#1B1B1B" stroke-opacity="0.12" stroke-width="2" stroke-linecap="round"/>
-      <path d="M50 62c4 10 18 12 20 0v22c0 8-6 14-14 14s-14-6-14-14v-22z" fill="#7DFFB0" opacity="0.85"/>
-      <circle cx="56" cy="74" r="3" fill="#ffffff" opacity="0.75"/>
-      <circle cx="64" cy="84" r="2.6" fill="#ffffff" opacity="0.65"/>
+    <g transform="translate(0,2) rotate(-10 60 60)">
+      <!-- glass -->
+      <path d="M50 22h20v54c0 12-8 22-20 22s-20-10-20-22V22h20" fill="#EAF7FF" opacity="0.95"
+        stroke="#1B1B1B" stroke-opacity="0.16" stroke-width="2" stroke-linejoin="round"/>
+      <!-- rim -->
+      <path d="M46 22h28" stroke="#1B1B1B" stroke-opacity="0.18" stroke-width="4" stroke-linecap="round"/>
+      <!-- measurement lines -->
+      <path d="M44 34h10M44 44h10M44 54h10M44 64h10" stroke="#1B1B1B" stroke-opacity="0.12" stroke-width="2" stroke-linecap="round"/>
+      <!-- liquid -->
+      <path d="M34 70c0 16 10 24 26 24s26-8 26-24v10c0 10-8 18-18 18H52c-10 0-18-8-18-18V70z"
+        fill="#7DFFB0" opacity="0.85"/>
+      <circle cx="54" cy="74" r="3.2" fill="#ffffff" opacity="0.7"/>
+      <circle cx="66" cy="84" r="2.7" fill="#ffffff" opacity="0.6"/>
     </g>
   `;
 
@@ -347,8 +353,9 @@ function spawnCameo() {
   if (!isGiftOpen) return;
   if (els.cameos.querySelectorAll(".cameo").length >= 6) return; // persistent, but keep it tasteful
 
-  const kinds = ["syringe", "bloodbag", "wheelchair", "stetho", "testtube"];
-  const kind = kinds[(Math.random() * kinds.length) | 0];
+  const kinds = ["syringe", "bloodbag", "stetho", "testtube", "wheelchair"];
+  spawnCameo.nextIndex = (spawnCameo.nextIndex ?? 0) + 1;
+  const kind = kinds[(spawnCameo.nextIndex - 1) % kinds.length];
 
   const el = document.createElement("div");
   el.className = "cameo";
